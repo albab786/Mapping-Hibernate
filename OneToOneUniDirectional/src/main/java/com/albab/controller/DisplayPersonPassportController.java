@@ -8,8 +8,10 @@ import java.util.List;
 public class DisplayPersonPassportController {
     public static void main(String[] args) {
         PersonPassportDao dao =new PersonPassportDao();
-        List<Person> allDetails = dao.getAllDetails();
-        allDetails.stream().forEach(n-> System.out.println(n));
+//        List<Person> allDetails = dao.getAllDetails();
+//        allDetails.stream().forEach(n-> System.out.println(n));
+        Person dataById = dao.getDataById(1);
+        System.out.println(dataById);
 
     }
 }

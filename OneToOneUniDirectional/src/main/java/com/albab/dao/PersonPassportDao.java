@@ -64,5 +64,30 @@ public class PersonPassportDao {
 
         return personList;
     }
+    public Person getDataById(int id) {
+        Person person = null;
+
+        try {
+            // Begin transaction
+            et.begin();
+
+            // Fetch the Person entity by ID
+            person = em.find(Person.class, id);
+
+            // Commit the transaction
+            et.commit();
+
+        } catch (Exception e) {
+            if (et.isActive()) {
+                et.rollback(); // Rollback in case of an error
+            }
+            e.printStackTrace();
+        } finally {
+            em.close(); // Close the EntityManager
+        }
+
+        return person;
+    }
+
 
 }
